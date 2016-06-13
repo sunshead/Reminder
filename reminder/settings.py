@@ -25,10 +25,23 @@ SECRET_KEY = 'ckmh44^b-&acoghq9h_$+&ywz0zt@n3rc6_2qoo4&iik7opwhe'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Twilio API
+TWILIO_NUMBER = os.environ.get('TWILIO_NUMBER')
+
+# Address of Redis instance, our Celery broker
+BROKER_URL = 'redis://localhost:6379/0'
+BROKER_POOL_LIMIT = 8
+
+# Reminder time: how early text messages are sent in advance of appointments
+REMINDER_TIME = 60 # minutes
+
 ALLOWED_HOSTS = []
 
 
 # Application definition
+LOCAL_APPS = (
+    'reminders',
+)
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -81,8 +94,12 @@ WSGI_APPLICATION = 'reminder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'reminder',
+        'USER': 'sunshead',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
