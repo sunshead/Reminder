@@ -1,0 +1,24 @@
+# Requirements for the reminders Django project
+
+# Django (1.8 is a long-term support release)
+Django==1.8
+
+# Third-party app dependencies
+arrow==0.5.4
+celery[redis]==3.1.18
+django-bootstrap3==5.4.0
+django-forms-bootstrap==3.0.1
+django-timezone-field==1.2
+psycopg2==2.6
+twilio==4.4.0
+whitenoise==1.0.6
+
+# Production dependencies
+dj-database-url==0.3.0
+gunicorn==19.3.0
+
+# Test dependencies
+coverage==3.7.1
+mock==1.0.1
+model-mommy==1.2.4
+six==1.9.0
